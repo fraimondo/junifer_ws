@@ -1,0 +1,15 @@
+key: value
+list_1: [1, 2, 3, 4, 5]
+list_2:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+nested_dicts:
+  type_bool: true
+  type_string: This is a string
+  type_muliline_string: |
+    this is the first line
+    this is the second line
+
