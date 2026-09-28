@@ -1,8 +1,10 @@
 # %%
-from ruaml.yaml import YAML
+from ruamel.yaml import YAML
 
-fname = example.yaml
+fname = "example.yaml"
 
 yaml = YAML()
-content = yaml.load(fname)
+with open(fname, "r") as f:
+    content = yaml.load(f)
 print(content)
+# %%

@@ -9,7 +9,7 @@ list_2:
 nested_dicts:
   type_bool: true
   type_string: This is a string
-  type_muliline_string: |
+  type_multiline_string: |
     this is the first line
     this is the second line
 
