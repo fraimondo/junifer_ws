@@ -1,0 +1,16 @@
+workdir: /tmp
+
+datagrabber:
+  kind: DataladAOMICID1000
+  types:
+    - VBM_GM
+
+markers:
+  - name: Schaefer1000x7_Mean
+    kind: ParcelAggregation
+    parcellation: Schaefer1000x7
+    method: mean
+  
+storage:
+  kind: HDF5FeatureStorage
+  uri: /data/group/riseml/fraimondo/2024_HIP/features/ds003097_GMD/ds003097_GMD.hdf5
