@@ -4,6 +4,7 @@ datagrabber:
   kind: DataladAOMICID1000
   types: 
       - BOLD
+      - VBM_GM
 
 preprocess:
     kind: fMRIPrepConfoundRemover
@@ -17,13 +18,14 @@ preprocess:
     high_pass: 0.01
     masks:
       - compute_brain_mask:
-        source: subject
-        mask_type: gm
+          source: subject
+          mask_type: gm
+          threshold: 0.2
   
 markers:
   - name: FC-DMNBuckner-5mm
     kind: FunctionalConnectivitySpheres
-    cor_method: correlation
+    conn_method: correlation
     coords: DMNBuckner
     radius: 5
     allow_overlap: true
@@ -32,21 +34,21 @@ markers:
 
   - name: FC-Schaefer100x17
     kind: FunctionalConnectivityParcels
-    cor_method: correlation
+    conn_method: correlation
     parcellation: Schaefer100x17
     masks: 
       - inherit
 
 storage:
   kind: HDF5FeatureStorage
-  uri: /data/group/riseml/fraimondo/2024_HIP/features/ds003097_FC/ds003097_FC.hdf5
+  uri: /data/group/riseml/fraimondo/junifer_ws/features/ds003097_FC/ds003097_FC.hdf5
 
 queue:
   jobname: aomic_fc
   kind: HTCondor
   env:
-    kind: conda
-    name: neurodc
+    kind: venv
+    name: /home/fraimondo/doc/junifer_ws/.venv
   mem: 8G
   disk: 5G
   verbose: info

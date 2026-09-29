@@ -13,4 +13,5 @@ markers:
   
 storage:
   kind: HDF5FeatureStorage
-  uri: /data/group/riseml/fraimondo/2024_HIP/features/ds003097_GMD/ds003097_GMD.hdf5
+  uri: /data/group/riseml/fraimondo/junifer_ws/features/ds003097_GMD/ds003097_GMD.hdf5
+
