@@ -1,0 +1,74 @@
+workdir: /tmp
+
+datagrabber:
+  kind: PatternDataladDataGrabber
+  uri: https://github.com/OpenNeuroDatasets/ds003097.git
+  datadir: /data/group/riseml/fraimondo/junifer_ws/data/ds003097  #remove, this is only for speeding up the workshop process
+  patterns:
+    BOLD:
+      pattern: "derivatives/fmriprep/{subject}/func/{subject}_task-{task}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz"
+      space: "MNI152NLin2009cAsym"
+      mask:
+        pattern: "derivatives/fmriprep/{subject}/func/{subject}_task-{task}_space-MNI152NLin2009cAsym_desc-brain_mask.nii.gz"
+        space: "MNI152NLin2009cAsym"
+      confounds:
+        pattern: "derivatives/fmriprep/{subject}/func/{subject}_task-{task}_desc-confounds_timeseries.tsv"
+        format: "fmriprep"
+      reference:
+        pattern: "derivatives/fmriprep/{subject}/func/{subject}_task-{task}_space-MNI152NLin2009cAsym_boldref.nii.gz"
+  replacements:
+    - subject
+    - task
+  types:
+   - BOLD
+
+preprocess:
+    kind: fMRIPrepConfoundRemover
+    detrend: true
+    standardize: true
+    strategy:
+        motion: full
+        wm_csf: full
+        global_signal: full
+    low_pass: 0.08
+    high_pass: 0.01
+    masks:
+      - compute_brain_mask:
+          source: subject
+          mask_type: gm
+          threshold: 0.2
+  
+markers:
+  - name: FC-DMNBuckner-5mm
+    kind: FunctionalConnectivitySpheres
+    conn_method: correlation
+    coords: DMNBuckner
+    radius: 5
+    allow_overlap: true
+    masks: 
+      - inherit
+
+  - name: FC-Schaefer100x17
+    kind: FunctionalConnectivityParcels
+    conn_method: correlation
+    parcellation: Schaefer100x17
+    masks: 
+      - inherit
+
+storage:
+  kind: HDF5FeatureStorage
+  uri: /data/group/riseml/fraimondo/junifer_ws/features/ds003097_FC/ds003097_FC.hdf5
+
+queue:
+  jobname: aomic_fc
+  kind: HTCondor
+  env:
+    kind: venv
+    name: /home/fraimondo/doc/junifer_ws/.venv
+  mem: 8G
+  disk: 5G
+  verbose: info
+  pre_run: |
+    source /data/group/appliedml/tools/afni_23.1.10/afni.sh
+    source /data/group/appliedml/tools/ants_2.5.0/ants.sh
+    source /data/group/appliedml/tools/fsl_6.0.4-patched2/fsl.sh
