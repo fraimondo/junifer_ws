@@ -9,7 +9,7 @@ authors = [
 requires-python = ">=3.13"
 dependencies = [
     "ipykernel>=7.3.0",
-    "junifer>=0.0.7",
+    "junifer>0.0.7",
     "ruamel-yaml>=0.18.17",
 ]
 
