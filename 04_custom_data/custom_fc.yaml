@@ -3,7 +3,7 @@ workdir: /tmp
 datagrabber:
   kind: PatternDataladDataGrabber
   uri: https://github.com/OpenNeuroDatasets/ds003097.git
-  datadir: /data/group/riseml/fraimondo/junifer_ws/data/ds003097  #remove, this is only for speeding up the workshop process
+  datadir: /data/group/riseml/fraimondo/junifer_ws/data/ds003097  #remove datadir, this is only for speeding up the workshop process
   patterns:
     BOLD:
       pattern: "derivatives/fmriprep/{subject}/func/{subject}_task-{task}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz"
@@ -16,11 +16,15 @@ datagrabber:
         format: "fmriprep"
       reference:
         pattern: "derivatives/fmriprep/{subject}/func/{subject}_task-{task}_space-MNI152NLin2009cAsym_boldref.nii.gz"
+    VBM_GM:
+      pattern: "derivatives/fmriprep/{subject}/anat/{subject}_space-MNI152NLin2009cAsym_label-GM_probseg.nii.gz"
+      space: "MNI152NLin2009cAsym"
   replacements:
     - subject
     - task
   types:
    - BOLD
+   - VBM_GM
 
 preprocess:
     kind: fMRIPrepConfoundRemover
@@ -65,6 +69,7 @@ queue:
   env:
     kind: venv
     name: /home/fraimondo/doc/junifer_ws/.venv
+    shell: bash
   mem: 8G
   disk: 5G
   verbose: info

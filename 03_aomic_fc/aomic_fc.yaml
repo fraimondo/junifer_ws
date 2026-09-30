@@ -49,6 +49,7 @@ queue:
   env:
     kind: venv
     name: /home/fraimondo/doc/junifer_ws/.venv
+    shell: bash
   mem: 8G
   disk: 5G
   verbose: info
@@ -56,3 +57,4 @@ queue:
     source /data/group/appliedml/tools/afni_23.1.10/afni.sh
     source /data/group/appliedml/tools/ants_2.5.0/ants.sh
     source /data/group/appliedml/tools/fsl_6.0.4-patched2/fsl.sh
+
