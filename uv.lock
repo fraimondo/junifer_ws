@@ -751,7 +751,7 @@ wheels = [
 
 [[package]]
 name = "junifer"
-version = "0.0.8.dev202"
+version = "0.0.8.dev206"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aenum" },
@@ -774,9 +774,9 @@ dependencies = [
     { name = "templateflow" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/de/bb/f460596d62be3438510db58a0650e356341cb83734edc735586a87c4c5bd/junifer-0.0.8.dev202.tar.gz", hash = "sha256:c902c425c8361eeb94d6113827754b470d0a82346226560508585368d54da702", size = 858833, upload-time = "2026-08-25T08:35:39.817Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/45/41/e8cf6a0c4f6447933c67b09bed301650f4e0539f90c9aa58d4d6271d1286/junifer-0.0.8.dev206.tar.gz", hash = "sha256:1dbacc1bebafc7996333bc55c4cefa3ad216774487257a38f60655f95d8d0b61", size = 859127, upload-time = "2026-09-30T09:13:46.776Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f1/94/36582aea7ad1908f40b49666746ee4d6179cd59e5de2d30fff32112be73d/junifer-0.0.8.dev202-py3-none-any.whl", hash = "sha256:e5e73a630a5ff5c84e559a82cadbcc591254b43dcaee83b08c87ad09da5d9f8a", size = 699523, upload-time = "2026-08-25T08:35:38Z" },
+    { url = "https://files.pythonhosted.org/packages/42/f2/c7b630067b5a0c94fa3064d48cdb164a74bf604e5d49945d27289e68f695/junifer-0.0.8.dev206-py3-none-any.whl", hash = "sha256:4d2ae3116e0d2637c5aa4ae7d560c9b84c408331f3cf6d855c45013691a562d5", size = 699725, upload-time = "2026-09-30T09:13:44.586Z" },
 ]
 
 [[package]]
